@@ -1,6 +1,6 @@
 # Academic website — Marcelo Gantier-Mita
 
-Single-page static site (plain HTML + CSS, no build step).
+Live at https://marcelogantier.github.io. Plain HTML + CSS, no build step.
 
 ## Files
 
