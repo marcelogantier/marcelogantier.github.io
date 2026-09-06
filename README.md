@@ -4,16 +4,11 @@ Live at https://marcelogantier.github.io. Plain HTML + CSS, no build step.
 
 ## Files
 
-- `index.html` — all content, plus a small script that highlights the active nav item on scroll
-- `style.css` — styles (Lora headings, Lato body, accent #1b3a5c, text #2B2B2B, white background)
-- `photo.jpg` — headshot (add your own; square image, ~600×600 px)
-- `files/` — put PDFs here (CV, JMP, policy brief) and link to them as `files/name.pdf`
+- `index.html` — all content. Tabs (Bio, Job Market Paper, Research, Teaching) are panels in this one file; a small script at the bottom shows one at a time based on the URL hash.
+- `style.css` — styles (Lato, navy accent #1b3a5c, text #2B2B2B, white background).
+- `photo.jpg` — headshot; `omoro_headquarters.jpg` — photo shown with the job market paper.
+- `files/` — PDFs (CV, papers), linked as `files/name.pdf`.
 
-## Deploy on GitHub Pages
+## Editing
 
-1. Create a public repository named `<username>.github.io` (site served at `https://<username>.github.io`), or any other name (served at `https://<username>.github.io/<repo>`).
-2. Push these files to the `main` branch.
-3. In the repository: Settings → Pages → Source "Deploy from a branch", Branch `main`, folder `/ (root)` → Save.
-4. Wait one or two minutes and open the URL shown on that page.
-
-To edit content, open `index.html` and change the text inside each `<section>`. Nothing needs to be compiled.
+Edit `index.html` and push to `main`; GitHub Pages redeploys in a minute or two.
