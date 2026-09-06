@@ -1,0 +1,310 @@
+/* ==========================================================
+   Marcelo Gantier-Mita — academic site
+   Structure: academicpages-style sticky sidebar (photo, name,
+   links) on the left, single-page content on the right.
+   Font: Lato throughout
+   Accent: #1b3a5c   Text: #2B2B2B   Background: #ffffff
+   ========================================================== */
+
+:root {
+  --accent: #1b3a5c;
+  --accent-dark: #142c47;
+  --link: #1f4f87;          /* clickable text: lighter, more saturated than the navy used for structure */
+  --link-hover: #173d6a;
+  --text: #2B2B2B;
+  --muted: #5f6b76;
+  --rule: #e3e6ea;
+  --bg: #ffffff;
+  --footer-bg: #f3f5f8;
+  --max: 1040px;
+  --sidebar-w: 230px;
+  --header-h: 56px;
+  --font-head: "Lato", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-padding-top: calc(var(--header-h) + 20px); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus { color: var(--link-hover); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+p { margin: 0 0 16px; }
+
+/* ---------- Masthead / nav ---------- */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.nav-name:hover { text-decoration: none; }
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2px;
+}
+
+.nav-links a {
+  display: block;
+  padding: 4px 9px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+}
+.nav-links a:hover { color: var(--accent); text-decoration: none; }
+.nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+
+/* ---------- Two-column page ---------- */
+.page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 44px 28px 0;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ---------- Sidebar (stays fixed while the content scrolls) ---------- */
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 36px);
+  align-self: start;
+}
+
+.avatar {
+  display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  background: #eef1f4;
+}
+
+.author-name { font-size: 1.35rem; margin-bottom: 4px; }
+.author-title { font-size: 0.93rem; color: var(--muted); margin-bottom: 18px; line-height: 1.45; }
+
+.author-links {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+.author-links li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 9px;
+  color: var(--muted);
+  word-break: break-word;
+}
+.author-links a { color: var(--text); }
+.author-links a:hover { color: var(--link); }
+.icon { width: 15px; height: 15px; flex: 0 0 15px; fill: var(--accent); }
+
+/* ---------- Main content ---------- */
+.content { min-width: 0; max-width: 680px; }
+
+.panel { padding: 0 0 40px; }
+.panel[hidden] { display: none; }
+
+/* Level 1: section title (Lato bold, navy) */
+.panel h2 {
+  font-size: 1.55rem;
+  margin-bottom: 22px;
+}
+
+.lede { font-size: 1.05rem; }
+.fields { margin-bottom: 0; color: var(--muted); }
+.fields strong { font-weight: 700; color: var(--text); }
+
+/* Level 2: group label (Lato bold, uppercase, dark text, black rule underneath).
+   Different case and colour from paper titles (navy, mixed case),
+   so the two never read as the same level. */
+.subheading {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text);
+  margin: 38px 0 16px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--text);
+}
+.panel h2 + .subheading { margin-top: 0; }
+
+/* Level 3: paper title (Lato bold, navy) */
+.paper { margin: 0 0 24px; }
+.paper-title { font-size: 1.12rem; margin-bottom: 4px; text-wrap: balance; }
+.paper-title a { color: var(--link); }
+.paper-title a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+.paper-meta { margin: 0 0 6px; color: var(--muted); font-size: 0.92rem; }
+.paper-meta a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.paper-meta a:hover { color: var(--link); text-decoration-color: var(--link); }
+
+/* Where the paper has been presented: one muted line, label in bold */
+.presentations { margin: 0 0 8px; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.presentations .label { font-weight: 700; color: var(--text); }
+
+/* Level 4: sub-group inside pre-doctoral work (Lato bold italic, body color) */
+.minor-heading {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--text);
+  margin: 18px 0 8px;
+}
+
+details.abstract { margin-top: 4px; }
+details.abstract summary {
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--link);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+details.abstract summary::-webkit-details-marker { display: none; }
+details.abstract summary::before { content: "+"; font-size: 1rem; width: 12px; text-align: center; }
+details.abstract[open] summary::before { content: "\2013"; }
+details.abstract p {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--rule);
+  font-size: 0.96rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Photo attached to a paper (JMP) */
+.paper-figure { margin: 18px 0 0; }
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.paper-figure figcaption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.pub-list, .teach-list { margin: 0; padding-left: 20px; }
+.pub-list li, .teach-list li { margin-bottom: 9px; font-size: 0.96rem; }
+.pub-list a { color: var(--link); }
+.pub-list em a { color: var(--text); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.pub-list em a:hover { color: var(--link); text-decoration-color: var(--link); }
+
+.course { font-weight: 700; }
+.topics { color: var(--muted); font-size: 0.9rem; }
+.award { color: var(--accent); font-style: italic; }
+
+/* ---------- Footer: tinted band that marks the end of the page ---------- */
+.site-footer {
+  margin-top: auto;               /* pushed to the bottom on short tabs (Bio, Contact) */
+  background: var(--footer-bg);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 22px 0 26px;
+}
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+.site-footer p { margin: 0; }
+.site-footer .credit { margin-top: 4px; font-size: 0.8rem; }
+.site-footer a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.site-footer a:hover { color: var(--link); text-decoration-color: var(--link); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .page { grid-template-columns: 1fr; gap: 28px; padding-top: 32px; }
+  .content { max-width: none; }
+
+  /* Sidebar becomes a compact centred header, academicpages-style */
+  .sidebar { position: static; text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+  .avatar { width: 110px; height: 110px; margin: 0 auto 12px; }
+  .author-name { font-size: 1.25rem; }
+  .author-title { margin-bottom: 12px; }
+  .author-links {
+    border-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+  }
+  .author-links li { margin: 0; }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  html { scroll-padding-top: 100px; }
+
+  .nav { height: auto; flex-direction: column; align-items: flex-start; padding: 10px 18px 0; gap: 4px; }
+  .nav-links { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 0.85rem; padding: 6px 8px; }
+
+  .page { padding: 28px 18px 0; }
+  .footer-inner { padding: 0 18px; }
+  details.abstract p { text-align: left; }
+}
+
