@@ -124,9 +124,10 @@ p { margin: 0 0 14px; }
 
 .avatar {
   display: block;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
   object-fit: cover;
   margin-bottom: 16px;
   background: #eef1f4;
@@ -297,7 +298,7 @@ details.abstract p {
 
   /* Sidebar becomes a compact centred header, academicpages-style */
   .sidebar { position: static; text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
-  .avatar { width: 110px; height: 110px; margin: 0 auto 12px; }
+  .avatar { width: 160px; margin: 0 auto 12px; }
   .author-name { font-size: 1.25rem; }
   .author-title { margin-bottom: 12px; }
   .author-links {
