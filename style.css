@@ -197,9 +197,11 @@ p { margin: 0 0 14px; }
 .paper-meta a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
 .paper-meta a:hover { color: var(--link); text-decoration-color: var(--link); }
 
-/* Job market paper in the Research tab: light blue card with a navy edge and a small label */
-.paper--jmp {
-  padding: 16px 20px 14px;
+/* Job market paper in the Research tab: label, title and links on a light blue band with a navy edge;
+   the abstract and "Presented at" below it look like any other paper */
+.jmp-head {
+  margin-bottom: 8px;
+  padding: 14px 20px 10px;
   background: #eef3f9;
   border-left: 3px solid var(--accent);
   border-radius: 0 4px 4px 0;
