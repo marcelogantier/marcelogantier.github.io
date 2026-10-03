@@ -21,7 +21,6 @@
       <li><a href="#bio" data-panel="bio">Home</a></li>
       <!-- CV tab: opens the PDF. To host it on the site, drop it in files/ and change the href to files/cv_gantier.pdf -->
       <li><a href="files/cv_gantier.pdf" target="_blank" rel="noopener">CV</a></li>
-      <li><a href="#jmp" data-panel="jmp">Job Market Paper</a></li>
       <li><a href="#research" data-panel="research">Research</a></li>
       <li><a href="#teaching" data-panel="teaching">Teaching</a></li>
     </ul>
@@ -88,11 +87,16 @@
       <p class="fields"><strong>Research interests:</strong> Development Economics, Political Economy, Environmental Economics.</p>
     </section>
 
-    <!-- ---------- JOB MARKET PAPER ---------- -->
-    <section id="jmp" class="panel" hidden>
-      <h2>Job Market Paper</h2>
-      <article class="paper">
-        <!-- To put the draft online: add files/jmp_gantier.pdf, wrap the title in <a href="files/jmp_gantier.pdf" target="_blank" rel="noopener">, replace the meta line below with "Latest draft: <Month YEAR>", do the same in the Research tab card, push -->
+    <!-- ---------- RESEARCH ---------- -->
+    <section id="research" class="panel" hidden>
+      <h2>Research</h2>
+
+      <h3 class="subheading">Working Papers</h3>
+
+      <!-- Job market paper, highlighted -->
+      <article class="paper paper--jmp">
+        <p class="paper-tag">Job Market Paper</p>
+        <!-- To put the draft online: add files/jmp_gantier.pdf, wrap the title in <a href="files/jmp_gantier.pdf" target="_blank" rel="noopener">, replace the meta line below with "Latest draft: <Month YEAR>", push -->
         <h3 class="paper-title">Bringing Services Closer to People? Distance to Administrators and the Reach of the State</h3>
         <p class="paper-meta">
           Draft available upon request
@@ -108,28 +112,6 @@
           </figure>
         </details>
         <p class="presentations"><span class="label">Presented at:</span> PacDev 2026 (UC Davis), STEG Annual Conference and Theme Workshops 2026, Vancouver School of Economics Development and Political Economy seminar, European Doctoral Programme Jamboree 2024 (UPF), 12th Warwick PhD Economics Conference, 2nd Essex PhD Economics Conference, AFEDEV International Conference on Development Economics 2023, 14th Bolivian Conference on Development Economics, PSE Development and Political Economy seminar.</p>
-      </article>
-    </section>
-
-    <!-- ---------- RESEARCH ---------- -->
-    <section id="research" class="panel" hidden>
-      <h2>Research</h2>
-
-      <h3 class="subheading">Working Papers</h3>
-
-      <!-- Job market paper, highlighted. When the draft goes public, link this title too (same as the JMP tab) -->
-      <article class="paper paper--jmp">
-        <p class="paper-tag">Job Market Paper</p>
-        <h3 class="paper-title">Bringing Services Closer to People? Distance to Administrators and the Reach of the State</h3>
-        <p class="paper-meta">
-          Draft available upon request
-          · <a href="https://www.theigc.org/publications/proximity-to-administrators-effect-on-public-service-delivery-uganda" target="_blank" rel="noopener">IGC policy brief</a>
-          · <a href="https://www.theigc.org/blogs/distance-public-service-delivery-uganda" target="_blank" rel="noopener">IGC blog post</a>
-        </p>
-        <details class="abstract">
-          <summary>Abstract</summary>
-          <p>As populations grow, extending the reach of the state to a larger and more dispersed population becomes increasingly challenging. Many developing countries have responded by creating new subnational administrative units, bringing local administrators physically closer to citizens. Leveraging an episode of district proliferation in Uganda, this paper studies whether geographical proximity to local government administrative centers improves access to public goods and services and changes citizens’ engagement with government. To establish causality, I exploit a policy implementation rule that generated exogenous variation in households’ proximity to new district headquarters. Households living closer to these centers have significantly better access to electricity, roads, health facilities, and water sources. Proximity also shifts engagement from contentious to participatory channels and reduces direct experiences of corruption. Despite these gains, proximity does not increase trust in government or improve democratic perceptions, including in politically aligned districts where engagement effects are stronger. Finally, each district split raises transfers to the pre-split district territory by roughly 14 percent, with most of the increase concentrated in administrative expenditures rather than service delivery budgets.</p>
-        </details>
       </article>
 
       <article class="paper">
@@ -278,13 +260,14 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Tab navigation: show one panel at a time, driven by the URL hash (#bio, #jmp, ...)
+  // Tab navigation: show one panel at a time, driven by the URL hash (#bio, #research, ...)
   (function () {
     var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[data-panel]'));
     var ids = panels.map(function (p) { return p.id; });
 
     function show(id) {
+      if (id === 'jmp') id = 'research';   // the JMP tab was folded into Research (Oct 2026)
       if (ids.indexOf(id) === -1) id = ids[0];
       panels.forEach(function (p) { p.hidden = (p.id !== id); });
       tabs.forEach(function (a) {
