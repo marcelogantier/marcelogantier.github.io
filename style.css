@@ -212,7 +212,6 @@ p { margin: 0 0 14px; }
   text-transform: uppercase;
   color: var(--accent);
 }
-.paper--jmp details.abstract p { background: var(--bg); }
 
 /* Journal / working-paper series: its own line, bold, under the coauthors */
 .paper-venue { margin: 0 0 6px; font-weight: 700; font-size: 0.88rem; color: var(--accent); }
