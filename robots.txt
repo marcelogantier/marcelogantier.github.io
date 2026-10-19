@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /files/jmp_gantier.pdf
+Allow: /
 
 Sitemap: https://marcelogantier.github.io/sitemap.xml
